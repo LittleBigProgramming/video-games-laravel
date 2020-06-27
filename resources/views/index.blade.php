@@ -292,8 +292,83 @@
                 </div>
             </div>
             <div class="most-anticipated w-1/4">
-                <h2 class="h2 text-blue-uppercase tracking-wide font-semibold">Most Anticipated</h2>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa dolor, ducimus earum, error facere id in, pariatur praesentium quas quos reprehenderit saepe tempora ut vero voluptas voluptates voluptatibus? Ab assumenda eligendi fuga itaque magnam, nam odio quos repellat soluta voluptatibus. A aliquam assumenda blanditiis consequatur cumque cupiditate delectus harum id, itaque laboriosam, libero officia officiis quo quos sit tempora unde.
+                <h2 class="h2 text-blue-uppercase tracking-wide font-semibold">Coming Soon</h2>
+                <div class="most-anticipated-container space-y-10 mt-8">
+                    <div class="item flex">
+                        <a href="#">
+                            <img src="https://via.placeholder.com/500x750" alt="" class="w-24 hover:opacity-75 transition ease-in-out duration-150">
+                        </a>
+                        <div class="ml-4">
+                            <a href="#" class="hover:text-gray-300">Item Title</a>
+                            <div class="text-gray-400 text-sm mt-1">Dec 25, 2020</div>
+                        </div>
+                    </div>
+                    <div class="item flex">
+                        <a href="#">
+                            <img src="https://via.placeholder.com/500x750" alt="" class="w-24 hover:opacity-75 transition ease-in-out duration-150">
+                        </a>
+                        <div class="ml-4">
+                            <a href="#" class="hover:text-gray-300">Item Title</a>
+                            <div class="text-gray-400 text-sm mt-1">Dec 25, 2020</div>
+                        </div>
+                    </div>
+                    <div class="item flex">
+                        <a href="#">
+                            <img src="https://via.placeholder.com/500x750" alt="" class="w-24 hover:opacity-75 transition ease-in-out duration-150">
+                        </a>
+                        <div class="ml-4">
+                            <a href="#" class="hover:text-gray-300">Item Title</a>
+                            <div class="text-gray-400 text-sm mt-1">Dec 25, 2020</div>
+                        </div>
+                    </div>
+                    <div class="item flex">
+                        <a href="#">
+                            <img src="https://via.placeholder.com/500x750" alt="" class="w-24 hover:opacity-75 transition ease-in-out duration-150">
+                        </a>
+                        <div class="ml-4">
+                            <a href="#" class="hover:text-gray-300">Item Title</a>
+                            <div class="text-gray-400 text-sm mt-1">Dec 25, 2020</div>
+                        </div>
+                    </div>
+                    <h2 class="h2 text-blue-uppercase tracking-wide font-semibold">Most Anticipated</h2>
+                    <div class="most-anticipated-container space-y-10 mt-8">
+                        <div class="item flex">
+                            <a href="#">
+                                <img src="https://via.placeholder.com/500x750" alt="" class="w-24 hover:opacity-75 transition ease-in-out duration-150">
+                            </a>
+                            <div class="ml-4">
+                                <a href="#" class="hover:text-gray-300">Item Title</a>
+                                <div class="text-gray-400 text-sm mt-1">Dec 25, 2020</div>
+                            </div>
+                        </div>
+                        <div class="item flex">
+                            <a href="#">
+                                <img src="https://via.placeholder.com/500x750" alt="" class="w-24 hover:opacity-75 transition ease-in-out duration-150">
+                            </a>
+                            <div class="ml-4">
+                                <a href="#" class="hover:text-gray-300">Item Title</a>
+                                <div class="text-gray-400 text-sm mt-1">Dec 25, 2020</div>
+                            </div>
+                        </div>
+                        <div class="item flex">
+                            <a href="#">
+                                <img src="https://via.placeholder.com/500x750" alt="" class="w-24 hover:opacity-75 transition ease-in-out duration-150">
+                            </a>
+                            <div class="ml-4">
+                                <a href="#" class="hover:text-gray-300">Item Title</a>
+                                <div class="text-gray-400 text-sm mt-1">Dec 25, 2020</div>
+                            </div>
+                        </div>
+                        <div class="item flex">
+                            <a href="#">
+                                <img src="https://via.placeholder.com/500x750" alt="" class="w-24 hover:opacity-75 transition ease-in-out duration-150">
+                            </a>
+                            <div class="ml-4">
+                                <a href="#" class="hover:text-gray-300">Item Title</a>
+                                <div class="text-gray-400 text-sm mt-1">Dec 25, 2020</div>
+                            </div>
+                        </div>
+                </div>
             </div>
         </div>
     </div>
