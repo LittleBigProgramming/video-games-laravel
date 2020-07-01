@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mx-auto px-4">
         <h2 class="text-blue-400 uppercase tracking-wide font-semibold">Popular Items</h2>
-        <div class="popular-games text-sm grid grid-cols-6 gap-12 border-b border-gray-700 pb-8 pt-4">
+        <div class="popular-games text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6 gap-12 border-b border-gray-700 pb-8 pt-4">
             <div class="game mt-4">
                 <div class="relative inline-block">
                     <a href="#">
@@ -222,8 +222,8 @@
             </div>
         </div>
 
-        <div class="flex my-10">
-            <div class="recently-reviewed w-3/4 mr-32">
+        <div class="flex flex-col lg:flex-row my-10">
+            <div class="recently-reviewed w-full lg:w-3/4 mr-0 lg:mr-32">
                 <h2 class="h2 text-blue-uppercase tracking-wide font-semibold">Recently Reviewed</h2>
                 <div class="recently-reviewed-container space-y-12 mt-8">
                     <div class="item bg-gray-700 rounded-large shadow-md flex p-6">
@@ -242,7 +242,7 @@
                                 Item Title
                             </a>
                             <div class="text-gray-400 mt-1">Category</div>
-                            <div class="mt-6 text-gray-400">
+                            <div class="mt-6 text-gray-400 hidden md:block">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur doloribus iste itaque neque perspiciatis. Alias architecto eius eveniet illo magni, nam odio perspiciatis recusandae ullam.
                             </div>
                         </div>
@@ -263,7 +263,7 @@
                                 Item Title
                             </a>
                             <div class="text-gray-400 mt-1">Category</div>
-                            <div class="mt-6 text-gray-400">
+                            <div class="mt-6 text-gray-400 hidden md:block">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur doloribus iste itaque neque perspiciatis. Alias architecto eius eveniet illo magni, nam odio perspiciatis recusandae ullam.
                             </div>
                         </div>
@@ -284,14 +284,14 @@
                                 Item Title
                             </a>
                             <div class="text-gray-400 mt-1">Category</div>
-                            <div class="mt-6 text-gray-400">
+                            <div class="mt-6 text-gray-400 hidden md:block">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur doloribus iste itaque neque perspiciatis. Alias architecto eius eveniet illo magni, nam odio perspiciatis recusandae ullam.
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="most-anticipated w-1/4">
+            <div class="most-anticipated w-full lg:w-1/4 mt-12 lg:mt-0">
                 <h2 class="h2 text-blue-uppercase tracking-wide font-semibold">Coming Soon</h2>
                 <div class="most-anticipated-container space-y-10 mt-8">
                     <div class="item flex">
