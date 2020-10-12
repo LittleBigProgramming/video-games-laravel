@@ -10,11 +10,13 @@
                         <a href="#">
                             <img src="{{ Str::replaceFirst('thumb', 'cover_big', $game['cover']['url']) }}" alt="" class="hover:opacity-75 transition ease-in-out duration-150">
                         </a>
-                        <div class="absolute bottom-0 right-0 w-12 h-12 bg-gray-700 rounded-full" style="right:-20px; bottom: -20px;">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">
-                                80%
+                        @if (isset($game['rating']))
+                            <div class="absolute bottom-0 right-0 w-12 h-12 bg-gray-700 rounded-full" style="right:-20px; bottom: -20px;">
+                                <div class="font-semibold text-xs flex justify-center items-center h-full">
+                                    {{ round($game['rating']).'%' }}
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
                     <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
                         {{ $game['name'] }}
@@ -34,69 +36,37 @@
             <div class="recently-reviewed w-full lg:w-3/4 mr-0 lg:mr-32">
                 <h2 class="h2 text-blue-uppercase tracking-wide font-semibold">Recently Reviewed</h2>
                 <div class="recently-reviewed-container space-y-12 mt-8">
-                    <div class="item bg-gray-700 rounded-large shadow-md flex p-6">
-                        <div class="relative flex-none">
-                            <a href="#">
-                                <img src="https://via.placeholder.com/500x750" alt="" class="w-48 hover:opacity-75 transition ease-in-out duration-150">
-                            </a>
-                            <div class="absolute bottom-0 right-0 w-12 h-12 bg-gray-800 rounded-full" style="right:-20px; bottom: -20px;">
-                                <div class="font-semibold text-xs flex justify-center items-center h-full">
-                                    80%
+                    @foreach ($recentlyReviewedGames ?? '' as $game)
+                        <div class="item bg-gray-700 rounded-large shadow-md flex p-6">
+                            <div class="relative flex-none">
+                                <a href="#">
+                                    <img src="{{ Str::replaceFirst('thumb', 'cover_big', $game['cover']['url']) }}" alt="" class="w-48 hover:opacity-75 transition ease-in-out duration-150">
+                                </a>
+                                @if (isset($game['rating']))
+                                    <div class="absolute bottom-0 right-0 w-12 h-12 bg-gray-800 rounded-full" style="right:-20px; bottom: -20px;">
+                                        <div class="font-semibold text-xs flex justify-center items-center h-full">
+                                            {{ round($game['rating']).'%' }}
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="ml-12">
+                                <a href="#" class="block text-lg font-semibold leading-tight hover:text-gray-400 mt-8">
+                                    {{ $game['name'] }}
+                                </a>
+                                <div class="text-gray-400 mt-1">
+                                    @foreach ($game['platforms'] as $platform)
+                                        @if (array_key_exists('abbreviation', $platform))
+                                            {{ $platform['abbreviation'] }} |
+                                        @endif
+                                    @endforeach
+                                </div>
+                                <div class="mt-6 text-gray-400 hidden md:block">
+                                    {{ $game['summary'] }}
                                 </div>
                             </div>
                         </div>
-                        <div class="ml-12">
-                            <a href="#" class="block text-lg font-semibold leading-tight hover:text-gray-400 mt-8">
-                                Item Title
-                            </a>
-                            <div class="text-gray-400 mt-1">Category</div>
-                            <div class="mt-6 text-gray-400 hidden md:block">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur doloribus iste itaque neque perspiciatis. Alias architecto eius eveniet illo magni, nam odio perspiciatis recusandae ullam.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item bg-gray-700 rounded-large shadow-md flex p-6">
-                        <div class="relative flex-none">
-                            <a href="#">
-                                <img src="https://via.placeholder.com/500x750" alt="" class="w-48 hover:opacity-75 transition ease-in-out duration-150">
-                            </a>
-                            <div class="absolute bottom-0 right-0 w-12 h-12 bg-gray-800 rounded-full" style="right:-20px; bottom: -20px;">
-                                <div class="font-semibold text-xs flex justify-center items-center h-full">
-                                    80%
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ml-12">
-                            <a href="#" class="block text-lg font-semibold leading-tight hover:text-gray-400 mt-8">
-                                Item Title
-                            </a>
-                            <div class="text-gray-400 mt-1">Category</div>
-                            <div class="mt-6 text-gray-400 hidden md:block">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur doloribus iste itaque neque perspiciatis. Alias architecto eius eveniet illo magni, nam odio perspiciatis recusandae ullam.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item bg-gray-700 rounded-large shadow-md flex p-6">
-                        <div class="relative flex-none">
-                            <a href="#">
-                                <img src="https://via.placeholder.com/500x750" alt="" class="w-48 hover:opacity-75 transition ease-in-out duration-150">
-                            </a>
-                            <div class="absolute bottom-0 right-0 w-12 h-12 bg-gray-800 rounded-full" style="right:-20px; bottom: -20px;">
-                                <div class="font-semibold text-xs flex justify-center items-center h-full">
-                                    80%
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ml-12">
-                            <a href="#" class="block text-lg font-semibold leading-tight hover:text-gray-400 mt-8">
-                                Item Title
-                            </a>
-                            <div class="text-gray-400 mt-1">Category</div>
-                            <div class="mt-6 text-gray-400 hidden md:block">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur doloribus iste itaque neque perspiciatis. Alias architecto eius eveniet illo magni, nam odio perspiciatis recusandae ullam.
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <div class="most-anticipated w-full lg:w-1/4 mt-12 lg:mt-0">
