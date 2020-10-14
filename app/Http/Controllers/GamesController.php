@@ -11,12 +11,13 @@ class GamesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
         $before = Carbon::now()->subMonths(2)->timestamp;
         $after = Carbon::now()->addMonths(2)->timestamp;
+        $afterFourMonth = Carbon::now()->addMonths(4)->timestamp;
         $current = Carbon::now()->timestamp;
 
         $popularGames = Http::withHeaders(config('services.igdb'))
@@ -42,11 +43,34 @@ class GamesController extends Controller
             ])->get('https://api-v3.igdb.com/games')
             ->json();
 
-        dump($recentlyReviewedGames);
+        $mostAnticipated = Http::withHeaders(config('services.igdb'))
+            ->withOptions([
+                'body' => "
+                    fields name, cover.url, first_release_date, popularity, platforms.abbreviation, rating, rating_count, summary;
+                    where platforms = (48,49,130,6)
+                    & ( first_release_date > {$current}
+                    & first_release_date < {$afterFourMonth});
+                    sort popularity desc;
+                    limit 4;"
+            ])->get('https://api-v3.igdb.com/games')
+            ->json();
+
+        $comingSoon = Http::withHeaders(config('services.igdb'))
+            ->withOptions([
+                'body' => "
+                    fields name, cover.url, first_release_date, popularity, platforms.abbreviation, rating, rating_count, summary;
+                    where platforms = (48,49,130,6)
+                    & ( first_release_date >= {$current});
+                    sort first_release_date asc;
+                    limit 4;"
+            ])->get('https://api-v3.igdb.com/games')
+            ->json();
 
         return view('index', [
             'popularGames' => $popularGames,
             'recentlyReviewedGames' => $recentlyReviewedGames,
+            'mostAnticipated' => $mostAnticipated,
+            'comingSoon' => $comingSoon
         ]);
     }
 
