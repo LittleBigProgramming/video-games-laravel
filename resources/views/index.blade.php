@@ -56,7 +56,7 @@
                             </div>
                             <div class="ml-12">
                                 <a href="#" class="block text-lg font-semibold leading-tight hover:text-gray-400 mt-8">
-                                    {{ $game['name'] }}
+                                    {{ $game['name'] ?? '' }}
                                 </a>
                                 <div class="text-gray-400 mt-1">
                                     @foreach ($game['platforms'] as $platform)

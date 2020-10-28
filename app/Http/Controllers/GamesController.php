@@ -20,13 +20,7 @@ class GamesController extends Controller
         $afterFourMonth = Carbon::now()->addMonths(4)->timestamp;
         $current = Carbon::now()->timestamp;
 
-        $clientId = config('services.igdb.client-id');
-        $authToken = config('services.igdb.auth-token');
-
-        $popularGames = Http::withHeaders([
-            'Client-ID' => $clientId,
-            'Authorization' => "Bearer {$authToken}"
-        ])
+        $popularGames = Http::withHeaders(config('services.igdb.headers'))
             ->withBody(
             "fields name, cover.url, first_release_date, total_rating_count, platforms.abbreviation, rating;
                     where platforms = (48,49,130,6)
@@ -35,13 +29,10 @@ class GamesController extends Controller
                     & total_rating_count > 5);
                     sort total_rating_count desc;
                      limit 20;", 'text/plain'
-            )->post('https://api.igdb.com/v4/games')
+            )->post(config('services.igdb.games-endpoint'))
             ->json();
 
-        $recentlyReviewedGames = Http::withHeaders([
-            'Client-ID' => $clientId,
-            'Authorization' => "Bearer {$authToken}"
-        ])
+        $recentlyReviewedGames = Http::withHeaders(config('services.igdb.headers'))
             ->withBody(
                 "fields name, cover.url, first_release_date, total_rating_count, platforms.abbreviation, rating, rating_count, summary, slug;
                     where platforms = (48,49,130,6)
@@ -51,13 +42,10 @@ class GamesController extends Controller
                     sort total_rating_count desc;
                     limit 3;
                 ", "text/plain"
-            )->post('https://api.igdb.com/v4/games')
+            )->post(config('services.igdb.games-endpoint'))
             ->json();
 
-        $mostAnticipated = Http::withHeaders([
-            'Client-ID' => $clientId,
-            'Authorization' => "Bearer {$authToken}"
-        ])
+        $mostAnticipated = Http::withHeaders(config('services.igdb.headers'))
             ->withBody(
                 "fields name, cover.url, first_release_date, total_rating_count, platforms.abbreviation, rating, rating_count, summary, slug;
                     where platforms = (48,49,130,6)
@@ -66,13 +54,10 @@ class GamesController extends Controller
                     );
                     sort total_rating_count desc;
                     limit 4;", "text/plain"
-            )->post('https://api.igdb.com/v4/games')
+            )->post(config('services.igdb.games-endpoint'))
             ->json();
 
-        $comingSoon = Http::withHeaders([
-            'Client-ID' => $clientId,
-            'Authorization' => "Bearer {$authToken}"
-        ])
+        $comingSoon = Http::withHeaders(config('services.igdb.headers'))
             ->withBody(
                 "fields name, cover.url, first_release_date, platforms.abbreviation, rating, rating_count, summary, slug;
                     where platforms = (48,49,130,6)
@@ -81,7 +66,7 @@ class GamesController extends Controller
                     sort first_release_date asc;
                     limit 4;
                 ", "text/plain"
-            )->post('https://api.igdb.com/v4/games')
+            )->post(config('services.igdb.games-endpoint'))
             ->json();
 
         return view('index', [

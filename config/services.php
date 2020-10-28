@@ -31,9 +31,10 @@ return [
     ],
 
     'igdb' => [
-        'user-key' => env('IGDB_KEY'), // This is used for api v3 which is being deprecated
-        'client-id' => env('IGDB_CLIENT_ID'),
-        'auth-token' => env('IGDB_AUTH_TOKEN')
+        'headers' => [
+            'Client-ID' => env('IGDB_CLIENT_ID'),
+            'Authorization' => 'Bearer '.env('IGDB_ACCESS_TOKEN'),
+        ],
+        'games-endpoint' => 'https://api.igdb.com/v4/games',
     ]
-
 ];
