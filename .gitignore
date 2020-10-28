@@ -17,3 +17,5 @@ composer.phar
 Vagrantfile
 after.sh
 aliases
+
+storage/debugbar/

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" xmlns:livewire="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +9,7 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link rel="stylesheet" href="/css/main.css">
-
+    @livewireStyles
 </head>
 <body class="bg-gray-800 text-white">
     <header class="border-b border-gray-700">
@@ -45,5 +45,7 @@
             Powered By <a href="#" class="underline hover:text-gray-400">IGDB API</a>
         </div>
     </footer>
+
+    @livewireScripts
 </body>
 </html>
