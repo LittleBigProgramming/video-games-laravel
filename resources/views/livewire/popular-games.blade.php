@@ -28,6 +28,6 @@
         </div>
 
     @empty
-        <div>Loading...</div>
+        <div class="spinner my-8 p-6"></div>
     @endforelse
 </div>
