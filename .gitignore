@@ -12,3 +12,8 @@ npm-debug.log
 yarn-error.log
 .idea/
 composer.phar
+
+.vagrant/
+Vagrantfile
+after.sh
+aliases

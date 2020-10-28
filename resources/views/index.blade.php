@@ -21,14 +21,14 @@
                         @endif
                     </div>
                     <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
-                        {{ $game['name'] }}
+                        {{ $game['name'] ?? '' }}
                     </a>
                     <div class="text-gray-400 mt-1">
-                        @foreach ($game['platforms'] as $platform)
-                            @if (array_key_exists('abbreviation', $platform))
-                                {{ $platform['abbreviation'] }} |
-                            @endif
-                        @endforeach
+                        {{--@foreach ($game['platforms'] as $platform)--}}
+                            {{--@if (array_key_exists('abbreviation', $platform))--}}
+                                {{--{{ $platform['abbreviation'] }} |--}}
+                            {{--@endif--}}
+                        {{--@endforeach--}}
                     </div>
                 </div>
             @endforeach

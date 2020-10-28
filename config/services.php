@@ -31,7 +31,9 @@ return [
     ],
 
     'igdb' => [
-        'user-key' => env('IGDB_KEY')
+        'user-key' => env('IGDB_KEY'), // This is used for api v3 which is being deprecated
+        'client-id' => env('IGDB_CLIENT_ID'),
+        'auth-token' => env('IGDB_AUTH_TOKEN')
     ]
 
 ];
