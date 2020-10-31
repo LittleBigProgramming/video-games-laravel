@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
@@ -15,17 +16,19 @@ class ComingSoonGames extends Component
     {
         $current = Carbon::now()->timestamp;
 
-        $this->comingSoonGames = Http::withHeaders(config('services.igdb.headers'))
-            ->withBody(
-                "fields name, cover.url, first_release_date, platforms.abbreviation, rating, rating_count, summary, slug;
-                    where platforms = (48,49,130,6)
-                    & (first_release_date >= {$current}
-                    );
-                    sort first_release_date asc;
-                    limit 4;
-                ", "text/plain"
-            )->post(config('services.igdb.games-endpoint'))
-            ->json();
+        $this->comingSoonGames = Cache::remember('coming-soon-games', 300, function () use ($current) {
+            return Http::withHeaders(config('services.igdb.headers'))
+                ->withBody(
+                    "fields name, cover.url, first_release_date, platforms.abbreviation, rating, rating_count, summary, slug;
+                        where platforms = (48,49,130,6)
+                        & (first_release_date >= {$current}
+                        );
+                        sort first_release_date asc;
+                        limit 4;
+                    ", "text/plain"
+                )->post(config('services.igdb.games-endpoint'))
+                ->json();
+        });
     }
 
     public function render()
