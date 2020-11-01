@@ -15,66 +15,7 @@ class GamesController extends Controller
      */
     public function index()
     {
-//        $before = Carbon::now()->subMonths(2)->timestamp;
-//        $after = Carbon::now()->addMonths(2)->timestamp;
-//        $afterFourMonth = Carbon::now()->addMonths(4)->timestamp;
-//        $current = Carbon::now()->timestamp;
-
-//        $popularGames = Http::withHeaders(config('services.igdb.headers'))
-//            ->withBody(
-//            "fields name, cover.url, first_release_date, total_rating_count, platforms.abbreviation, rating;
-//                    where platforms = (48,49,130,6)
-//                    & ( first_release_date > {$before}
-//                    & first_release_date < {$after}
-//                    & total_rating_count > 5);
-//                    sort total_rating_count desc;
-//                     limit 20;", 'text/plain'
-//            )->post(config('services.igdb.games-endpoint'))
-//            ->json();
-
-//        $recentlyReviewedGames = Http::withHeaders(config('services.igdb.headers'))
-//            ->withBody(
-//                "fields name, cover.url, first_release_date, total_rating_count, platforms.abbreviation, rating, rating_count, summary, slug;
-//                    where platforms = (48,49,130,6)
-//                    & (first_release_date >= {$before}
-//                    & first_release_date < {$current}
-//                    & rating_count > 5);
-//                    sort total_rating_count desc;
-//                    limit 3;
-//                ", "text/plain"
-//            )->post(config('services.igdb.games-endpoint'))
-//            ->json();
-
-//        $mostAnticipated = Http::withHeaders(config('services.igdb.headers'))
-//            ->withBody(
-//                "fields name, cover.url, first_release_date, total_rating_count, platforms.abbreviation, rating, rating_count, summary, slug;
-//                    where platforms = (48,49,130,6)
-//                    & (first_release_date >= {$current}
-//                    & first_release_date < {$afterFourMonth}
-//                    );
-//                    sort total_rating_count desc;
-//                    limit 4;", "text/plain"
-//            )->post(config('services.igdb.games-endpoint'))
-//            ->json();
-
-//        $comingSoon = Http::withHeaders(config('services.igdb.headers'))
-//            ->withBody(
-//                "fields name, cover.url, first_release_date, platforms.abbreviation, rating, rating_count, summary, slug;
-//                    where platforms = (48,49,130,6)
-//                    & (first_release_date >= {$current}
-//                    );
-//                    sort first_release_date asc;
-//                    limit 4;
-//                ", "text/plain"
-//            )->post(config('services.igdb.games-endpoint'))
-//            ->json();
-
-        return view('index', [
-//            'popularGames' => $popularGames,
-//            'recentlyReviewedGames' => $recentlyReviewedGames,
-//            'mostAnticipated' => $mostAnticipated,
-//            'comingSoon' => $comingSoon
-        ]);
+        return view('index');
     }
 
     /**
@@ -99,14 +40,28 @@ class GamesController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function show(string $slug)
     {
-        //
+        $game = Http::withHeaders(config('services.igdb.headers'))
+            ->withBody(
+                "
+                    fields name, cover.url, first_release_date, platforms.abbreviation, rating,
+                        slug, involved_companies.company.name, genres.name, aggregated_rating, summary,
+                        websites.*, videos.*, screenshots.*, similar_games.cover.url, similar_games.name,
+                        similar_games.rating,similar_games.platforms.abbreviation, similar_games.slug;
+                    where slug=\"{$slug}\";
+                ", "text/plain"
+            )->post(config('services.igdb.games-endpoint'))
+            ->json();
+
+        abort_if(!$game, 404);
+
+        return view('show', [
+            'game' => $game[0]
+        ]);
     }
 
     /**
