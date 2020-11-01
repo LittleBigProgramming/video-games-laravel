@@ -2,16 +2,15 @@
     @forelse ($popularGames ?? '' as $game)
         <div class="game mt-4">
             <div class="relative inline-block">
-                {{ $game['slug'] }}
-                @if (isset($game['cover']))
+                @if (isset($game['coverImageUrl']))
                     <a href="{{ route('games.show', $game['slug']) }}">
-                        <img src="{{ Str::replaceFirst('thumb', 'cover_big', $game['cover']['url']) }}" alt="" class="hover:opacity-75 transition ease-in-out duration-150">
+                        <img src="{{ $game['coverImageUrl'] }}" alt="" class="hover:opacity-75 transition ease-in-out duration-150">
                     </a>
                 @endif
                 @if (isset($game['rating']))
                     <div class="absolute bottom-0 right-0 w-12 h-12 bg-gray-700 rounded-full" style="right:-20px; bottom: -20px;">
                         <div class="font-semibold text-xs flex justify-center items-center h-full">
-                            {{ round($game['rating']).'%' }}
+                            {{ $game['rating'] }}
                         </div>
                     </div>
                 @endif
@@ -20,11 +19,7 @@
                 {{ $game['name'] ?? '' }}
             </a>
             <div class="text-gray-400 mt-1">
-                @foreach ($game['platforms'] as $platform)
-                    @if (array_key_exists('abbreviation', $platform))
-                    {{ $platform['abbreviation'] }} |
-                    @endif
-                @endforeach
+                {{ $game['platforms'] }}
             </div>
         </div>
 
