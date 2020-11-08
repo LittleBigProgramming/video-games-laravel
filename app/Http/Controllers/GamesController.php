@@ -101,7 +101,7 @@ class GamesController extends Controller
 
     /**
      * @param array $game
-     * @return static
+     * @return \Illuminate\Support\Collection
      */
     private function formatForView(array $game)
     {
