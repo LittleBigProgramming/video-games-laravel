@@ -8,11 +8,7 @@ use Tests\TestCase;
 
 class ViewGameTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
+
     public function testGamePageShowsCorrectGameInfo()
     {
         Http::fake([
@@ -37,6 +33,9 @@ class ViewGameTest extends TestCase
         $response->assertSee('Borderlands 3');
     }
 
+    /**
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
     private function fakeSingleGame()
     {
         return Http::response([
