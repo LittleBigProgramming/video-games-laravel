@@ -11,12 +11,14 @@
     <link rel="stylesheet" href="/css/main.css">
     @livewireStyles
 </head>
-<body class="bg-gray-800 text-white">
+<body class="bg-gray-900 text-white">
     <header class="border-b border-gray-700">
         <nav class="container mx-auto flex flex-col lg:flex-row items-center justify-between py-6">
             <div class="flex flex-col lg:flex-row items-center">
                 <a href="/">
-                    <div class="w-32 flex-none">Logo</div>
+                    <div class="w-32 flex-none">
+                        <img src="/avatar.png" alt="avatar" class="rounded-full w-8">
+                    </div>
                 </a>
                 <ul class="flex ml-0 lg:ml-16 mt-6 lg:mt-0 space-x-8">
                     <li><a href="#" class="hover:text-gray-400">Items</a></li>
@@ -26,12 +28,7 @@
             </div>
             <div class="flex items-center mt-6 lg:mt-0">
                 <div class="relative">
-                    <input type="text" class="bg-gray-700 text-sm rounded-full px-3 py-1 w-64 focus:outline-none focus:shadow-outline" placeholder="Search">
-                </div>
-                <div class="ml-6">
-                    <a href="#">
-                        <img src="/avatar.png" alt="avatar" class="rounded-full w-8">
-                    </a>
+                    <input type="text" class="bg-gray-800 text-sm rounded-full px-3 py-1 w-64 focus:outline-none focus:shadow-outline" placeholder="Search">
                 </div>
             </div>
         </nav>

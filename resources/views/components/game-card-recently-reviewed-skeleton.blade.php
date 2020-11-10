@@ -1,4 +1,4 @@
-<div class="item bg-gray-700 rounded-large shadow-md flex p-6 pt-1">
+<div class="item bg-gray-800 rounded-large shadow-md flex p-6 pt-1">
     <div class="relative flex-none">
         <div class="bg-gray-600 w-32 lg:w-48 h-40 lg:h-56">
             <div class="spinner my-8 p-6"></div>
