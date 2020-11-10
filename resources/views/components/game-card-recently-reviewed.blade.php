@@ -1,4 +1,4 @@
-<div class="item bg-gray-700 rounded-large shadow-md flex p-6">
+<div class="item bg-gray-800 rounded-large shadow-md flex p-6">
     <div class="relative flex-none">
         @if (isset($game['coverImageUrl']))
             <a href="{{ route('games.show', $game['slug']) }}">
@@ -6,7 +6,7 @@
             </a>
         @endif
         @if (isset($game['rating']))
-            <div class="absolute bottom-0 right-0 w-12 h-12 bg-gray-800 rounded-full" style="right:-20px; bottom: -20px;">
+            <div class="absolute bottom-0 right-0 w-12 h-12 bg-gray-900 rounded-full" style="right:-20px; bottom: -20px;">
                 <div class="font-semibold text-xs flex justify-center items-center h-full">
                     {{ $game['rating'] }}
                 </div>
