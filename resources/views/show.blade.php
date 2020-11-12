@@ -30,7 +30,7 @@
                         </div>
                         <div class="ml-4 text-xs">Member <br> Score</div>
                     </div>
-                    <div class="flex items-center ml-12">
+                    <div class="flex items-center ml-12 mr-8">
                         <div class="w-16 h-16 bg-gray-800 rounded-full">
                             <div class="font-semibold text-xs flex justify-center items-center h-full">
                                 {{ $game['criticRating'] }}
@@ -38,7 +38,8 @@
                         </div>
                         <div class="ml-4 text-xs">Critic <br> Score</div>
                     </div>
-                    <div class="flex items-center space-x-4 mt-4 md:ml-8 lg:mt-0 lg:ml-12">
+                    {{--  md:ml-8--}}
+                    <div class="flex items-center space-x-4 mt-4 lg:mt-0">
                         @if ($game['social']['website'])
                             <div class="w-12 h-12 bg-gray-800 rounded-full flex justify-center items-center">
                                 <a href="{{ $game['social']['website']['url'] }}" class="hover:text-gray-400"><i class="fas fa-external-link-square-alt fa-lg"></i></a>
@@ -61,7 +62,7 @@
                         @endif
                     </div>
 
-                    <p class="mt-12 mr-64">
+                    <p class="mt-12 sm:mr-64">
                         {{ $game['summary'] }}
                     </p>
 
