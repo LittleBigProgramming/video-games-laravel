@@ -4,7 +4,7 @@
 @section('content')
     <div class="container mx-auto px-4">
         <div class="game-details border-b border-gray-700 pb-6 flex flex-col lg:flex-row">
-            <div class="flex-none">
+            <div class="flex-none mx-auto">
                 <img src="{{  $game['coverImageUrl'] }}" alt="cover" class="hover:opacity-75 transition ease-in-out duration-150">
             </div>
             <div class="lg:ml-12 lg:mr-64">
