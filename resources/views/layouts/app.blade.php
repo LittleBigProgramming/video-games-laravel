@@ -27,9 +27,7 @@
                 </ul>
             </div>
             <div class="flex items-center mt-6 lg:mt-0">
-                <div class="relative">
-                    <input type="text" class="bg-gray-800 text-sm rounded-full px-3 py-1 w-64 focus:outline-none focus:shadow-outline" placeholder="Search">
-                </div>
+                <livewire:search-dropdown />
             </div>
         </nav>
     </header>
