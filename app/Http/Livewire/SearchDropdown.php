@@ -12,11 +12,11 @@ class SearchDropdown extends Component
 
     public function render()
     {
-        if (strlen($this->search) >= 3)  {
+        if (strlen($this->search) >= 3) {
             $this->searchResults = Http::withHeaders(config('services.igdb.headers'))
                 ->withBody(
                     "search \"{$this->search}\";
-                fields name, cover.url, slug;
+                fields name, slug, cover.url;
                  limit 8;", 'text/plain'
                 )->post(config('services.igdb.games-endpoint'))
                 ->json();
